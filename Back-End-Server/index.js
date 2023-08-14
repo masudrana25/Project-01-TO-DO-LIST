@@ -44,3 +44,12 @@ app.post('/addTask', async (req, res) => {
   }
 });
 
+// find / get data from database
+app.get('/taskData', async (req, res) => {
+  try {
+    const taskData = await TaskSchema.find();
+    res.json(taskData);
+  } catch (error) {
+    res.send(err => console.log(err));
+  }
+});

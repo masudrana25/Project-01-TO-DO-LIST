@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
 import AddTask from './../AddTask/AddTask';
+import ShowTask from './../ShowTask/ShowTask';
 
 const Home = () => {
   return (
@@ -11,6 +12,10 @@ const Home = () => {
 
       <section>
         <AddTask></AddTask>
+      </section>
+
+      <section>
+        <ShowTask></ShowTask>
       </section>
     </div>
   );
