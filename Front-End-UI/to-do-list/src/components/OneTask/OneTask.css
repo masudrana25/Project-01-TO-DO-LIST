@@ -2,9 +2,10 @@
   border: 1px solid blueviolet;
   border-radius: 10px;
   padding: 8px;
-  margin-left: 10px;
+  margin-left: 30px;
   margin-bottom: 20px;
-  width: 300px;
+  /* min-width: 300px; */
+  width: 320px;
   height: 250px;
 }
 .button_3{

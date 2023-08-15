@@ -53,3 +53,17 @@ app.get('/taskData', async (req, res) => {
     res.send(err => console.log(err));
   }
 });
+
+//delete data 
+app.delete('/taskData/delete/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    await TaskSchema.findByIdAndDelete({_id : id});
+    res.send('deleted successfully');
+  } catch (error) {
+    res.send(err => console.log(err));
+  }
+});
+
+
+

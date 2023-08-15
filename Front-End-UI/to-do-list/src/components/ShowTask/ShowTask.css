@@ -1,5 +1,6 @@
 .showTask{
   display: flex;
+  flex-wrap: wrap;
 }
 .headline{
   color: blueviolet;
