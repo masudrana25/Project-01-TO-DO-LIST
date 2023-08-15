@@ -4,11 +4,14 @@
   padding: 8px;
   margin-left: 30px;
   margin-bottom: 20px;
-  /* min-width: 300px; */
   width: 320px;
   height: 250px;
 }
 .button_3{
   /* display: flex; */
   justify-content: end;
+}
+
+.complete{
+  text-decoration: line-through;
 }

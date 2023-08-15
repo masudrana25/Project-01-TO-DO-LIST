@@ -65,5 +65,16 @@ app.delete('/taskData/delete/:id', async (req, res) => {
   }
 });
 
-
+//findOne And Update complete status of that data
+app.patch('/taskData/findOneAndUpdate/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const matchedData = await TaskSchema.findById({ _id: id });
+    matchedData.isComplete = !matchedData.isComplete;
+    await matchedData.save();
+    res.send(matchedData);
+  } catch (error) {
+    res.send(err => console.log(err));
+  }
+});
 

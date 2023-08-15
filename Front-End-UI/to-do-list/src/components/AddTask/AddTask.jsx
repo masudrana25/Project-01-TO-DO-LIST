@@ -28,7 +28,7 @@ const AddTask = () => {
         <div className="addTask">
           <h3>Add New Task </h3>
           <form onSubmit={handleSubmit}>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="">
                 {' '}
                 <h4>Task Title</h4>{' '}
@@ -39,12 +39,12 @@ const AddTask = () => {
                 name="title"
                 id="title"
                 placeholder="Enter Your Task Title Name"
-                class="form-control"
+                className="form-control"
                 onChange={e => setTitle(e.target.value)}
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="">
                 <h4>Date</h4>
               </label>
@@ -54,12 +54,12 @@ const AddTask = () => {
                 name="date"
                 id="date"
                 placeholder="Enter Task Date"
-                class="form-control"
+                className="form-control"
                 onChange={e => setDate(e.target.value)}
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="">
                 <h4>Description of Your Task</h4>
               </label>{' '}
@@ -69,7 +69,7 @@ const AddTask = () => {
                 name="description"
                 id="description"
                 placeholder="Enter the Description of Your Task"
-                class="form-control"
+                className="form-control"
                 onChange={e => setDescription(e.target.value)}
               />
             </div>

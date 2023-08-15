@@ -25,7 +25,7 @@ const ShowTask = () => {
     <h1 className='container headline'>Your Tasks:</h1>
     <div className='showTask container'>
       {
-        taskData?.map(dt => <OneTask data = {dt}></OneTask>)
+        taskData?.map(dt => <OneTask data = {dt} key ={dt._id}></OneTask>)
       }
       </div>
       </>

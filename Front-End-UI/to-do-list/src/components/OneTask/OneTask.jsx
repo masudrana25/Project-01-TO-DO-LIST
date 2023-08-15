@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './OneTask.css';
 import axios from 'axios';
 
 const OneTask = props => {
   //get data from props
   const data = props.data;
-  console.log(data);
+  // console.log(data);
+
+  const [isComplete, setIsComplete] = useState(data.isComplete);
 
   //handle delete button
   const handleDelete = async id => {
@@ -13,7 +15,6 @@ const OneTask = props => {
       await axios
         .delete(`http://localhost:3300/taskData/delete/${id}`)
         .then(response => {
-          console.log(response);
           alert('This task is deleted.');
           window.location.reload();
         });
@@ -23,11 +24,17 @@ const OneTask = props => {
   };
 
   //handle complete button
-  const handleComplete = (id) => {
-    console.log('clicked complete button');
-  }
 
-
+  const handleComplete = async id => {
+    setIsComplete(!isComplete);
+    try {
+      await axios.patch(
+        `http://localhost:3300/taskData/findOneAndUpdate/${id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="oneTask d-flex flex-column">
@@ -38,10 +45,12 @@ const OneTask = props => {
       </div>
       <div className="button_3 mt-auto p-2">
         <button
-          className="btn btn-success"
+          className={`btn btn-warning ${
+            isComplete ? 'complete' : 'incomplete'
+          }`}
           onClick={() => handleComplete(data._id)}
         >
-          Complete
+          {isComplete ? 'Mark inComplete' : <h6>Mark Complete</h6>}
         </button>{' '}
         <button
           className="btn btn-primary"
