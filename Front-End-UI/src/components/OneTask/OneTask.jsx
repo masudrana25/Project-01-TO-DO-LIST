@@ -14,7 +14,7 @@ const OneTask = props => {
   const handleDelete = async id => {
     try {
       await axios
-        .delete(`http://localhost:10000/taskData/delete/${id}`)
+        .delete(`https://to-do-list-0l3h.onrender.com/taskData/delete/${id}`)
         .then(response => {
           alert('This task is deleted.');
           window.location.reload();
@@ -53,7 +53,7 @@ const OneTask = props => {
         >
           {isComplete ? 'Mark inComplete' : <h6>Mark Complete</h6>}
         </button>{' '}
-        <Link to = {`/edit/${data._id}`}>
+        <Link to={`/edit/${data._id}`}>
           <button className="btn btn-primary">Edit</button>
         </Link>
         <button
