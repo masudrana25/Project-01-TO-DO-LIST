@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './OneTask.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const OneTask = props => {
   //get data from props
@@ -52,12 +53,9 @@ const OneTask = props => {
         >
           {isComplete ? 'Mark inComplete' : <h6>Mark Complete</h6>}
         </button>{' '}
-        <button
-          className="btn btn-primary"
-          // onClick={() => handleEdit(data._id)}
-        >
-          Edit
-        </button>{' '}
+        <Link to = {`/edit/${data._id}`}>
+          <button className="btn btn-primary">Edit</button>
+        </Link>
         <button
           className="btn btn-danger"
           onClick={() => handleDelete(data._id)}

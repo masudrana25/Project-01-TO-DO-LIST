@@ -2,9 +2,9 @@
   border: 1px solid blueviolet;
   border-radius: 10px;
   padding: 8px;
-  margin-left: 30px;
+  margin-left: 10px;
   margin-bottom: 20px;
-  width: 320px;
+  width: 350px;
   height: 250px;
 }
 .button_3{
@@ -14,4 +14,9 @@
 
 .complete{
   text-decoration: line-through;
+}
+
+button{
+  margin-right: 5px;
+  margin-bottom: 5px;
 }

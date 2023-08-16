@@ -78,3 +78,24 @@ app.patch('/taskData/findOneAndUpdate/:id', async (req, res) => {
   }
 });
 
+//find data for edit 
+app.get('/taskData/getEditData/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const matchedData = await TaskSchema.findById({ _id: id });
+    res.send(matchedData);
+  } catch (error) {
+    res.send(err => console.log(err));
+  }
+});
+
+//update data after edit 
+app.put('/taskData/updateEditData/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const matchedData = await TaskSchema.findByIdAndUpdate({ _id: id },{title : req.body.title, date : req.body.date, description : req.body.description});
+    res.json(matchedData);
+  } catch (error) {
+    res.send(err => console.log(err));
+  }
+});

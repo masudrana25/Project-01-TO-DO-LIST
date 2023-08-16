@@ -1,37 +1,54 @@
-import React, { useState } from 'react';
-import './AddTask.css';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-
-const AddTask = () => {
-  
+const EditTask = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
 
+  const navigate = useNavigate();
+
+  //get data and show in the update form
+  useEffect(() => {
+    try {
+      axios
+        .get(`http://localhost:3300/taskData/getEditData/${id}`)
+        .then(res => {
+          setTitle(res.data.title);
+          setDate(res.data.date);
+          setDescription(res.data.description);
+          console.log(res);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [id]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    axios
-      .post('http://localhost:3300/addTask', {
+    try {
+      axios.put(`http://localhost:3300/taskData/updateEditData/${id}`, {
         title: title,
         date: date,
         description: description,
-      })
-      .then(result => {
-        console.log(result);
-        window.location.reload();
-      })
-      .catch(err => console.log(err));
+      });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div>
       <section id="add_task">
         <div className="addTask">
-          <h3>Add New Task </h3>
+          <h3>Edit Task </h3>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="">
+              <label htmlFor="title">
                 {' '}
                 <h4>Task Title</h4>{' '}
               </label>
@@ -40,6 +57,7 @@ const AddTask = () => {
                 type="text"
                 name="title"
                 id="title"
+                value={title}
                 placeholder="Enter Your Task Title Name"
                 className="form-control"
                 onChange={e => setTitle(e.target.value)}
@@ -47,7 +65,7 @@ const AddTask = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="">
+              <label htmlFor="date">
                 <h4>Date</h4>
               </label>
               <br />
@@ -55,6 +73,7 @@ const AddTask = () => {
                 type="text"
                 name="date"
                 id="date"
+                value={date}
                 placeholder="Enter Task Date"
                 className="form-control"
                 onChange={e => setDate(e.target.value)}
@@ -62,7 +81,7 @@ const AddTask = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="">
+              <label htmlFor="description">
                 <h4>Description of Your Task</h4>
               </label>{' '}
               <br />
@@ -70,6 +89,7 @@ const AddTask = () => {
                 type="text"
                 name="description"
                 id="description"
+                value={description}
                 placeholder="Enter the Description of Your Task"
                 className="form-control"
                 onChange={e => setDescription(e.target.value)}
@@ -81,7 +101,7 @@ const AddTask = () => {
               className="btn btn-success"
               id="handleAddTask"
             >
-              Add To Task
+              Update Edit Task
             </button>
           </form>
         </div>
@@ -90,4 +110,4 @@ const AddTask = () => {
   );
 };
 
-export default AddTask;
+export default EditTask;
