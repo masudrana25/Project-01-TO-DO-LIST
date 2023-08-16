@@ -14,7 +14,7 @@ const OneTask = props => {
   const handleDelete = async id => {
     try {
       await axios
-        .delete(`http://localhost:3300/taskData/delete/${id}`)
+        .delete(`http://localhost:10000/taskData/delete/${id}`)
         .then(response => {
           alert('This task is deleted.');
           window.location.reload();
@@ -30,7 +30,7 @@ const OneTask = props => {
     setIsComplete(!isComplete);
     try {
       await axios.patch(
-        `http://localhost:3300/taskData/findOneAndUpdate/${id}`
+        `http://localhost:10000/taskData/findOneAndUpdate/${id}`
       );
     } catch (error) {
       console.log(error);

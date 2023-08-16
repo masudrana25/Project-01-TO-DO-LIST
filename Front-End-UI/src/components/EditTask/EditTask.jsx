@@ -15,7 +15,7 @@ const EditTask = () => {
   useEffect(() => {
     try {
       axios
-        .get(`http://localhost:3300/taskData/getEditData/${id}`)
+        .get(`http://localhost:10000/taskData/getEditData/${id}`)
         .then(res => {
           setTitle(res.data.title);
           setDate(res.data.date);
@@ -30,7 +30,7 @@ const EditTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      axios.put(`http://localhost:3300/taskData/updateEditData/${id}`, {
+      axios.put(`http://localhost:10000/taskData/updateEditData/${id}`, {
         title: title,
         date: date,
         description: description,

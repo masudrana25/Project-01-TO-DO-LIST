@@ -12,7 +12,7 @@ const AddTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:3300/addTask', {
+      .post('http://localhost:10000/addTask', {
         title: title,
         date: date,
         description: description,
