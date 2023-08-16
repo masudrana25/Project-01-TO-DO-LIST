@@ -15,7 +15,7 @@ const EditTask = () => {
   useEffect(() => {
     try {
       axios
-        .get(`http://localhost:10000/taskData/getEditData/${id}`)
+        .get(`https://to-do-list-0l3h.onrender.com/taskData/getEditData/${id}`)
         .then(res => {
           setTitle(res.data.title);
           setDate(res.data.date);
@@ -30,11 +30,14 @@ const EditTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      axios.put(`http://localhost:10000/taskData/updateEditData/${id}`, {
-        title: title,
-        date: date,
-        description: description,
-      });
+      axios.put(
+        `https://to-do-list-0l3h.onrender.com/taskData/updateEditData/${id}`,
+        {
+          title: title,
+          date: date,
+          description: description,
+        }
+      );
       navigate('/');
     } catch (error) {
       console.log(error);

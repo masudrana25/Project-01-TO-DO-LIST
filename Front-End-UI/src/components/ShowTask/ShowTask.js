@@ -9,7 +9,7 @@ const ShowTask = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get('http://localhost:10000/taskData');
+        const data = await axios.get('https://to-do-list-0l3h.onrender.com/taskData');
         const tData = data.data;
         setTaskData(tData);
         // console.log(tData);

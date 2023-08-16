@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import './AddTask.css';
 import axios from 'axios';
 
-
 const AddTask = () => {
-  
   const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
@@ -12,7 +10,7 @@ const AddTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:10000/addTask', {
+      .post('https://to-do-list-0l3h.onrender.com/addTask', {
         title: title,
         date: date,
         description: description,

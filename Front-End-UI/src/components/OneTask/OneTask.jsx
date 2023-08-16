@@ -30,7 +30,7 @@ const OneTask = props => {
     setIsComplete(!isComplete);
     try {
       await axios.patch(
-        `http://localhost:10000/taskData/findOneAndUpdate/${id}`
+        `https://to-do-list-0l3h.onrender.com/taskData/findOneAndUpdate/${id}`
       );
     } catch (error) {
       console.log(error);
