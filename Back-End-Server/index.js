@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 
-const TaskSchema = require('./TaskSchema');
+const TaskSchema = require('./models/TaskSchema');
 
 require('dotenv').config();
 const PORT = process.env.PORT;
