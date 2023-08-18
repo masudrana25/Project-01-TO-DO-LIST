@@ -4,12 +4,15 @@ import OneTask from '../OneTask/OneTask';
 import './ShowTask.css'
 
 const ShowTask = () => {
+
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  
   const [taskData, setTaskData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get('https://to-do-list-0l3h.onrender.com/taskData');
+        const data = await axios.get(`${SERVER_URL}/taskData`);
         const tData = data.data;
         setTaskData(tData);
         // console.log(tData);

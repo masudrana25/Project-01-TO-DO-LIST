@@ -2,8 +2,15 @@
   width: 600px;
   height: 400px;
   padding-left: 50px;
-  
 }
 #add_task h3{
   text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  #add_task{
+  width: 360px;
+  height: 400px;
+  padding-left: 20px;
+}
 }

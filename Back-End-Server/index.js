@@ -8,6 +8,7 @@ const TaskSchema = require('./TaskSchema');
 
 require('dotenv').config();
 const PORT = process.env.PORT;
+const DB_URL = process.env.DB_URL;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -18,7 +19,7 @@ app.listen(PORT, () => {
 });
 
 //mongodb database connection
-mongoose.connect('mongodb+srv://my-own-projects:my-own-projects@cluster0.nadvefp.mongodb.net/to-do-list')
+mongoose.connect(DB_URL)
   .then((res) => {
     console.log('Database connected successfully');
   })

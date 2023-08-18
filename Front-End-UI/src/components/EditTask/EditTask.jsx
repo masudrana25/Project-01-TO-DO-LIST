@@ -9,19 +9,18 @@ const EditTask = () => {
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
 
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
 
   //get data and show in the update form
   useEffect(() => {
     try {
-      axios
-        .get(`https://to-do-list-0l3h.onrender.com/taskData/getEditData/${id}`)
-        .then(res => {
-          setTitle(res.data.title);
-          setDate(res.data.date);
-          setDescription(res.data.description);
-          console.log(res);
-        });
+      axios.get(`${SERVER_URL}/taskData/getEditData/${id}`).then(res => {
+        setTitle(res.data.title);
+        setDate(res.data.date);
+        setDescription(res.data.description);
+        console.log(res);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -30,14 +29,11 @@ const EditTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      axios.put(
-        `https://to-do-list-0l3h.onrender.com/taskData/updateEditData/${id}`,
-        {
-          title: title,
-          date: date,
-          description: description,
-        }
-      );
+      axios.put(`${SERVER_URL}/taskData/updateEditData/${id}`, {
+        title: title,
+        date: date,
+        description: description,
+      });
       navigate('/');
       window.location.reload();
     } catch (error) {

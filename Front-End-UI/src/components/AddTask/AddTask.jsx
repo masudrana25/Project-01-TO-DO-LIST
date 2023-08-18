@@ -7,10 +7,12 @@ const AddTask = () => {
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
 
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('https://to-do-list-0l3h.onrender.com/addTask', {
+      .post(`${SERVER_URL}/addTask`, {
         title: title,
         date: date,
         description: description,

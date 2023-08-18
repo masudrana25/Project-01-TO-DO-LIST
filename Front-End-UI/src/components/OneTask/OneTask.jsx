@@ -8,13 +8,15 @@ const OneTask = props => {
   const data = props.data;
   // console.log(data);
 
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   const [isComplete, setIsComplete] = useState(data.isComplete);
 
   //handle delete button
   const handleDelete = async id => {
     try {
       await axios
-        .delete(`https://to-do-list-0l3h.onrender.com/taskData/delete/${id}`)
+        .delete(`${SERVER_URL}/taskData/delete/${id}`)
         .then(response => {
           alert('This task is deleted.');
           window.location.reload();
@@ -29,9 +31,7 @@ const OneTask = props => {
   const handleComplete = async id => {
     setIsComplete(!isComplete);
     try {
-      await axios.patch(
-        `https://to-do-list-0l3h.onrender.com/taskData/findOneAndUpdate/${id}`
-      );
+      await axios.patch(`${SERVER_URL}/taskData/findOneAndUpdate/${id}`);
     } catch (error) {
       console.log(error);
     }
