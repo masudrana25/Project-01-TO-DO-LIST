@@ -8,7 +8,7 @@ const OneTask = props => {
   const data = props.data;
   // console.log(data);
 
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
   const [isComplete, setIsComplete] = useState(data.isComplete);
 
@@ -16,7 +16,7 @@ const OneTask = props => {
   const handleDelete = async id => {
     try {
       await axios
-        .delete(`${SERVER_URL}/taskData/delete/${id}`)
+        .delete(`${REACT_APP_SERVER_URL}/taskData/delete/${id}`)
         .then(response => {
           alert('This task is deleted.');
           window.location.reload();
@@ -31,7 +31,7 @@ const OneTask = props => {
   const handleComplete = async id => {
     setIsComplete(!isComplete);
     try {
-      await axios.patch(`${SERVER_URL}/taskData/findOneAndUpdate/${id}`);
+      await axios.patch(`${REACT_APP_SERVER_URL}/taskData/findOneAndUpdate/${id}`);
     } catch (error) {
       console.log(error);
     }

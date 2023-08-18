@@ -9,13 +9,13 @@ const EditTask = () => {
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
 
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
 
   //get data and show in the update form
   useEffect(() => {
     try {
-      axios.get(`${SERVER_URL}/taskData/getEditData/${id}`).then(res => {
+      axios.get(`${REACT_APP_SERVER_URL}/taskData/getEditData/${id}`).then(res => {
         setTitle(res.data.title);
         setDate(res.data.date);
         setDescription(res.data.description);
@@ -29,7 +29,7 @@ const EditTask = () => {
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      axios.put(`${SERVER_URL}/taskData/updateEditData/${id}`, {
+      axios.put(`${REACT_APP_SERVER_URL}/taskData/updateEditData/${id}`, {
         title: title,
         date: date,
         description: description,
