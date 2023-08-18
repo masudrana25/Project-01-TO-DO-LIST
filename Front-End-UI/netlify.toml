@@ -1,3 +1,0 @@
-[build]
-publish = "build"  # The directory with your built React app
-command = "npm run build"  # The build command
