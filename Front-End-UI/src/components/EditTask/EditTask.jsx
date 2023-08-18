@@ -15,16 +15,18 @@ const EditTask = () => {
   //get data and show in the update form
   useEffect(() => {
     try {
-      axios.get(`${REACT_APP_SERVER_URL}/taskData/getEditData/${id}`).then(res => {
-        setTitle(res.data.title);
-        setDate(res.data.date);
-        setDescription(res.data.description);
-        console.log(res);
-      });
+      axios
+        .get(`${REACT_APP_SERVER_URL}/taskData/getEditData/${id}`)
+        .then(res => {
+          setTitle(res.data.title);
+          setDate(res.data.date);
+          setDescription(res.data.description);
+          console.log(res);
+        });
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [REACT_APP_SERVER_URL, id]);
 
   const handleSubmit = e => {
     e.preventDefault();

@@ -21,7 +21,7 @@ const ShowTask = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [REACT_APP_SERVER_URL]);
 
   return (
     <>
