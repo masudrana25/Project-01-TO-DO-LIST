@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './AddTask.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddTask = () => {
   const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
+
+  const Navigate = useNavigate();
 
   const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -19,6 +22,7 @@ const AddTask = () => {
       })
       .then(result => {
         console.log(result);
+        Navigate('/task');
         window.location.reload();
       })
       .catch(err => console.log(err));

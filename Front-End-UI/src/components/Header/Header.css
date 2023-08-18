@@ -1,0 +1,13 @@
+ul{
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav li {
+  margin-right: 15px; /* Adjust this as needed */
+}
+
+#profile {
+  margin-right: 0;
+  margin-left: auto;
+}

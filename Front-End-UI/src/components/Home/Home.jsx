@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <section id='header_title'>
-        <h1>My To-Do-List</h1>
+        <h1>Your To-Do-List</h1>
       </section>
 
       <section>

@@ -36,7 +36,7 @@ const EditTask = () => {
         date: date,
         description: description,
       });
-      navigate('/');
+      navigate('/task');
       window.location.reload();
     } catch (error) {
       console.log(error);

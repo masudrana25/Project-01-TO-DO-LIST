@@ -31,7 +31,9 @@ const OneTask = props => {
   const handleComplete = async id => {
     setIsComplete(!isComplete);
     try {
-      await axios.patch(`${REACT_APP_SERVER_URL}/taskData/findOneAndUpdate/${id}`);
+      await axios.patch(
+        `${REACT_APP_SERVER_URL}/taskData/findOneAndUpdate/${id}`
+      );
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +53,7 @@ const OneTask = props => {
           }`}
           onClick={() => handleComplete(data._id)}
         >
-          {isComplete ? 'Mark inComplete' : <h6>Mark Complete</h6>}
+          {isComplete ? 'inComplete' : <h6>Complete</h6>}
         </button>{' '}
         <Link to={`/edit/${data._id}`}>
           <button className="btn btn-primary">Edit</button>
