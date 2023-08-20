@@ -44,7 +44,7 @@ const EditTask = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <section id="add_task">
         <div className="addTask">
           <h3>Edit Task </h3>

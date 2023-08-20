@@ -29,7 +29,7 @@ const AddTask = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <section id="add_task">
         <div className="addTask">
           <h3>Add New Task </h3>

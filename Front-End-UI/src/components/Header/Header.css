@@ -1,13 +1,30 @@
-ul{
-  display: flex;
-  align-items: center;
+@media screen and (min-width: 992px) {
+  #total-nav-item{
+  position: relative;
+}
+.nav-item{
+    margin-right: 50px;
+}
+#profile{
+  position: absolute;
+  right: 0px;
+}
 }
 
-.navbar-nav li {
-  margin-right: 15px; /* Adjust this as needed */
+
+.header{
+  position: sticky;
+  top: 0px;
 }
 
-#profile {
-  margin-right: 0;
-  margin-left: auto;
+.nav-item{
+    margin-right: 10px;
+}
+.nav-item :hover{
+  color: crimson;
+}
+h6{
+  color: purple;
+  font-weight: 700;
+  font-size: 20px;
 }
