@@ -24,7 +24,6 @@ const AddTask = () => {
           description: description,
         })
         .then(result => {
-          console.log(result);
           Navigate('/task');
           window.location.reload();
         })
