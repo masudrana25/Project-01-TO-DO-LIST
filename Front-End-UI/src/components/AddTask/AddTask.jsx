@@ -61,13 +61,13 @@ const AddTask = () => {
                 type="text"
                 name="title"
                 id="title"
-                maxLength={20}
+                maxLength={40}
                 placeholder="Enter Your Task Title Name"
                 className="form-control"
                 onChange={e => setTitle(e.target.value)}
                 onClick={e =>
                   (document.getElementById('title_warning').innerText =
-                    'Title should be Maximum 20 characters')
+                    'Title should be Maximum 40 characters')
                 }
               />
               <div className="title_warning" id="title_warning"></div>
