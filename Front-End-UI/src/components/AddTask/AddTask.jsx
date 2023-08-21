@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './AddTask.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const AddTask = () => {
   const [title, setTitle] = useState();
@@ -14,22 +16,37 @@ const AddTask = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios
-      .post(`${REACT_APP_SERVER_URL}/addTask`, {
-        title: title,
-        date: date,
-        description: description,
-      })
-      .then(result => {
-        console.log(result);
-        Navigate('/task');
-        window.location.reload();
-      })
-      .catch(err => console.log(err));
+    if (title && date && description) {
+      axios
+        .post(`${REACT_APP_SERVER_URL}/addTask`, {
+          title: title,
+          date: date,
+          description: description,
+        })
+        .then(result => {
+          console.log(result);
+          Navigate('/task');
+          window.location.reload();
+        })
+        .catch(err => console.log(err));
+    }else{
+      alert(`Please Fill Up All the Data Correctly. Then Click "Add to Task" button`);
+    }
+  };
+
+  // handle date
+  const [selectedDate, setSelectedDate] = useState(null);
+  const handleDate = e => {
+    setSelectedDate(e);
+    const year = e.getFullYear();
+    const month = e.getMonth() + 1;
+    const date = e.getDate();
+    const newDate = `${date}/${month}/${year}`;
+    setDate(newDate);
   };
 
   return (
-    <div className='container'>
+    <div className="container center">
       <section id="add_task">
         <div className="addTask">
           <h3>Add New Task </h3>
@@ -44,25 +61,32 @@ const AddTask = () => {
                 type="text"
                 name="title"
                 id="title"
+                maxLength={20}
                 placeholder="Enter Your Task Title Name"
                 className="form-control"
                 onChange={e => setTitle(e.target.value)}
+                onClick={e =>
+                  (document.getElementById('title_warning').innerText =
+                    'Title should be Maximum 20 characters')
+                }
               />
+              <div className="title_warning" id="title_warning"></div>
             </div>
 
             <div className="form-group">
               <label htmlFor="">
                 <h4>Date</h4>
-              </label>
+              </label>{' '}
               <br />
-              <input
-                type="text"
-                name="date"
-                id="date"
-                placeholder="Enter Task Date"
+              <DatePicker
                 className="form-control"
-                onChange={e => setDate(e.target.value)}
-              />
+                placeholder="Enter Task Date"
+                selected={selectedDate}
+                dateFormat="dd/MM/yyyy"
+                onChange={e => handleDate(e)}
+                showYearDropdown
+                showMonthDropdown
+              ></DatePicker>
             </div>
 
             <div className="form-group">
@@ -70,14 +94,24 @@ const AddTask = () => {
                 <h4>Description of Your Task</h4>
               </label>{' '}
               <br />
-              <input
+              <textarea
+                cols="50"
+                rows={5}
                 type="text"
                 name="description"
-                id="description"
+                maxLength={250}
                 placeholder="Enter the Description of Your Task"
                 className="form-control"
                 onChange={e => setDescription(e.target.value)}
-              />
+                onClick={e =>
+                  (document.getElementById('description_warning').innerText =
+                    'Title should be Maximum 250 characters')
+                }
+              ></textarea>
+              <div
+                className="description_warning"
+                id="description_warning"
+              ></div>
             </div>
 
             <button

@@ -40,11 +40,17 @@ const OneTask = props => {
   };
 
   return (
-    <div className="oneTask d-flex flex-column">
-      <div>
-        <h3>{data.title}</h3>
-        <h5>{data.date}</h5>
-        <p>{data.description}</p>
+    <div className="oneTask card">
+      <div className="card-body">
+        <div className="card-title">
+          <h5>{data.title}</h5>
+        </div>
+        <div className="card-text">
+          <h6> {data.date}</h6>
+        </div>
+        <div className="card-text">
+          <p> {data.description}</p>
+        </div>
       </div>
       <div className="button_3 mt-auto p-2">
         <button

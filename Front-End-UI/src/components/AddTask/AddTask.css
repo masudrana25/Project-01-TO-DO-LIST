@@ -1,16 +1,33 @@
-#add_task{
-  width: 600px;
-  height: 400px;
-  padding-left: 50px;
-}
+
 #add_task h3{
   text-align: center;
+  color: purple;
 }
 
 @media screen and (max-width: 480px) {
   #add_task{
   width: 300px;
-  height: 400px;
   padding-left: 30px;
+}
+}
+
+.title_warning{
+  color: red;
+}
+.description_warning{
+  color: red;
+}
+
+@media screen and (min-width: 500px) {
+ .center {
+  margin: auto;
+  width: 50%;
+}
+}
+
+@media screen and (max-width: 768px) {
+ .center {
+  margin: auto;
+  width: 80%;
 }
 }

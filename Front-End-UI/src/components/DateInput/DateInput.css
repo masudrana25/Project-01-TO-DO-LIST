@@ -1,0 +1,21 @@
+.date-input-container {
+  position: relative;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.date-picker-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+}
